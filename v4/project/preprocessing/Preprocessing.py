@@ -1,16 +1,4 @@
-import pandas as pd
-import numpy as np
-from pandas_profiling import ProfileReport
 from sklearn.model_selection import train_test_split
-
-# Plots
-import seaborn as sns
-import matplotlib.pyplot as plt
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import scipy.stats as stats
-import feature_engine.imputation as imp
-
 
 # preprocess the location (own class)
 from .location import process_location

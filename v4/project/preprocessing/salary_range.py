@@ -1,5 +1,4 @@
 import pandas as pd
-import re
 def process_salary_range(df):
 
     # filter dates

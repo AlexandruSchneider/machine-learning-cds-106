@@ -1,13 +1,11 @@
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, \
-    confusion_matrix
-from sklearn.metrics import roc_curve, auc, roc_auc_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
+from sklearn.metrics import roc_curve, auc
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
-
 from imblearn.over_sampling import SMOTE
 
 
