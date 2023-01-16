@@ -5,6 +5,8 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
     confusion_matrix
 from sklearn.metrics import roc_curve, auc, roc_auc_score
 import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings('ignore')
 
 
 def plot_roc_curve(y_test, y_pred, model_name):
@@ -27,7 +29,7 @@ def logisticRegression(X_train, y_train, X_test, y_test):
     # hyperparameter
     model = LogisticRegression(penalty='l2', dual=False, tol=0.0001, C=1.0, fit_intercept=True,
                                intercept_scaling=1, class_weight=None, random_state=None, solver='lbfgs',
-                               max_iter=100, multi_class='auto', verbose=0, warm_start=False, n_jobs=None,
+                               max_iter=1000, multi_class='auto', verbose=0, warm_start=False, n_jobs=None,
                                l1_ratio=None)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
@@ -58,6 +60,7 @@ def randomForest(X_train, y_train, X_test, y_test):
 
 
 def models(X_train, y_train, X_test, y_test):
+    print(f'-------------------------------------\nStarting Modelling Process\n-------------------------------------')
     results = pd.DataFrame(columns=
                            ['Model', 'Accuracy', 'F1 Score', 'Precision',
                             'Recall',
@@ -65,6 +68,7 @@ def models(X_train, y_train, X_test, y_test):
                             ])
 
     lr_list = logisticRegression(X_train, y_train, X_test, y_test)
+    print(f'Logistic Regression DONE!')
     results = results.append(
         {'Model': 'Logistic Regression', 'Accuracy': lr_list[0], 'F1 Score': lr_list[1], 'Precision': lr_list[2],
          'Recall': lr_list[3],
@@ -73,12 +77,12 @@ def models(X_train, y_train, X_test, y_test):
          }, ignore_index=True)
 
     rf_list = randomForest(X_train, y_train, X_test, y_test)
-
+    print(f'Random Forest DONE!')
     results = results.append(
         {'Model': 'Random Forest', 'Accuracy': rf_list[0], 'F1 Score': rf_list[1], 'Precision': rf_list[2],
          'Recall': rf_list[3],
          # 'True Positive': rf_list[4], 'False Positive': rf_list[5],
          # 'False Negative': rf_list[6], 'True Negative': rf_list[7]
          }, ignore_index=True)
-
+    print(f'-------------------------------------\nEnd Modelling Process\n-------------------------------------')
     return results
