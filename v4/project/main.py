@@ -13,7 +13,7 @@ import matplotlib.gridspec as gridspec
 from sklearn.utils import resample
 
 # data path
-DATA_PATH = 'v3/project/fake_job_postings.csv'
+DATA_PATH = 'v4/project/fake_job_postings.csv'
 
 def plot(table, title):
     # split df into two [true postive, true negative][false positive, false negative]
