@@ -6,7 +6,7 @@ from models.Models import models
 
 
 # data path
-DATA_PATH = 'v3/fake_job_postings.csv'
+DATA_PATH = 'v3/project/fake_job_postings.csv'
 
 if __name__ == '__main__':
     df = pd.read_csv(DATA_PATH)
