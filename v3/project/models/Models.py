@@ -22,6 +22,7 @@ def plot_roc_curve(y_test, y_pred, model_name):
     plt.ylabel('True Positive Rate')
     plt.title(f'ROC Curve of:  ' + model_name)
     plt.legend(loc="lower right")
+    plt.savefig('v3/project/outputs/' + model_name + '.png')
     plt.show()
 
 
@@ -64,7 +65,7 @@ def models(X_train, y_train, X_test, y_test):
     results = pd.DataFrame(columns=
                            ['Model', 'Accuracy', 'F1 Score', 'Precision',
                             'Recall',
-                            # 'True Positive', 'False Positive', 'False Negative', 'True Negative'
+                            'True Positive', 'False Positive', 'False Negative', 'True Negative'
                             ])
 
     lr_list = logisticRegression(X_train, y_train, X_test, y_test)
@@ -72,8 +73,8 @@ def models(X_train, y_train, X_test, y_test):
     results = results.append(
         {'Model': 'Logistic Regression', 'Accuracy': lr_list[0], 'F1 Score': lr_list[1], 'Precision': lr_list[2],
          'Recall': lr_list[3],
-         # 'True Positive': lr_list[4], 'False Positive': lr_list[5],
-         # 'False Negative': lr_list[6], 'True Negative': lr_list[7]
+         'True Positive': lr_list[4], 'False Positive': lr_list[5],
+         'False Negative': lr_list[6], 'True Negative': lr_list[7]
          }, ignore_index=True)
 
     rf_list = randomForest(X_train, y_train, X_test, y_test)
@@ -81,8 +82,8 @@ def models(X_train, y_train, X_test, y_test):
     results = results.append(
         {'Model': 'Random Forest', 'Accuracy': rf_list[0], 'F1 Score': rf_list[1], 'Precision': rf_list[2],
          'Recall': rf_list[3],
-         # 'True Positive': rf_list[4], 'False Positive': rf_list[5],
-         # 'False Negative': rf_list[6], 'True Negative': rf_list[7]
+         'True Positive': rf_list[4], 'False Positive': rf_list[5],
+         'False Negative': rf_list[6], 'True Negative': rf_list[7]
          }, ignore_index=True)
     print(f'-------------------------------------\nEnd Modelling Process\n-------------------------------------')
     return results
