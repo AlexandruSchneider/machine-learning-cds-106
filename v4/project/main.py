@@ -99,5 +99,14 @@ if __name__ == '__main__':
     final_output = pd.concat([output, output_60k])
     plot(final_output.iloc[2:4, :], '60k')
     
-
+    fig, ax = plt.subplots()
+    final_output = final_output.iloc[:, :-4]
+    # round to 3 decimals
+    final_output = final_output.round(3)
+    ax.table(cellText=final_output.values, colLabels=final_output.columns, loc='center')
+    # make font size bigger
+    ax.set_title('Metrics', fontsize=20)
+    plt.savefig('v4/project/outputs/Metrics_table.png')
+    plt.show()
+    
     
